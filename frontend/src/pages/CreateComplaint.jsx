@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export default function CreateComplaint() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -18,7 +20,7 @@ export default function CreateComplaint() {
 
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:5000/api/complaints', {
+      const res = await fetch(`${API_URL}/api/complaints`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,7 +35,7 @@ export default function CreateComplaint() {
       }
 
       navigate('/student');
-    } catch (err) {
+    } catch {
       setError('Server connection error.');
     }
   };

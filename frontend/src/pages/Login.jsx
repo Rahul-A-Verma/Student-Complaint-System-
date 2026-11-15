@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,7 +18,7 @@ export default function Login() {
     }
 
     try {
-      const res = await fetch('http://localhost:5000/api/login', {
+      const res = await fetch(`${API_URL}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -35,7 +37,7 @@ export default function Login() {
       } else {
         navigate('/student');
       }
-    } catch (err) {
+    } catch {
       setError('Unable to connect to server.');
     }
   };

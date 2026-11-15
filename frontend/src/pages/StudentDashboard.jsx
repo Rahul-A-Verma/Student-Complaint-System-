@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export default function StudentDashboard() {
   const [complaints, setComplaints] = useState([]);
   const [search, setSearch] = useState('');
@@ -11,13 +13,13 @@ export default function StudentDashboard() {
   const fetchComplaints = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:5000/api/complaints', {
+      const res = await fetch(`${API_URL}/api/complaints`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
       if (!res.ok) return setError(data.message || 'Error loading complaints');
       setComplaints(data);
-    } catch (err) {
+    } catch {
       setError('Server connection failed.');
     }
   };
@@ -30,14 +32,14 @@ export default function StudentDashboard() {
     if (!window.confirm('Delete this pending complaint?')) return;
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`http://localhost:5000/api/complaints/${id}`, {
+      const res = await fetch(`${API_URL}/api/complaints/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
       if (!res.ok) return alert(data.message);
       fetchComplaints();
-    } catch (err) {
+    } catch {
       alert('Failed to delete complaint.');
     }
   };

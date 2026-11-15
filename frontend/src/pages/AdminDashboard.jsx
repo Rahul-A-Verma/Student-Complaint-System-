@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export default function AdminDashboard() {
   const [complaints, setComplaints] = useState([]);
   const [users, setUsers] = useState([]);
@@ -14,8 +16,8 @@ export default function AdminDashboard() {
 
   const loadData = async () => {
     const [cRes, uRes] = await Promise.all([
-      fetch('http://localhost:5000/api/complaints', { headers }),
-      fetch('http://localhost:5000/api/users', { headers })
+      fetch(`${API_URL}/api/complaints`, { headers }),
+      fetch(`${API_URL}/api/users`, { headers })
     ]);
     if (cRes.ok) setComplaints(await cRes.json());
     if (uRes.ok) setUsers(await uRes.json());
@@ -24,7 +26,7 @@ export default function AdminDashboard() {
   useEffect(() => { loadData(); }, []);
 
   const updateStatus = async (id, status) => {
-    await fetch(`http://localhost:5000/api/complaints/${id}`, {
+    await fetch(`${API_URL}/api/complaints/${id}`, {
       method: 'PUT',
       headers,
       body: JSON.stringify({ status })
@@ -33,12 +35,12 @@ export default function AdminDashboard() {
   };
 
   const deleteComplaint = async (id) => {
-    await fetch(`http://localhost:5000/api/complaints/${id}`, { method: 'DELETE', headers });
+    await fetch(`${API_URL}/api/complaints/${id}`, { method: 'DELETE', headers });
     loadData();
   };
 
   const updateRole = async (id, role) => {
-    await fetch(`http://localhost:5000/api/users/${id}/role`, {
+    await fetch(`${API_URL}/api/users/${id}/role`, {
       method: 'PUT',
       headers,
       body: JSON.stringify({ role })

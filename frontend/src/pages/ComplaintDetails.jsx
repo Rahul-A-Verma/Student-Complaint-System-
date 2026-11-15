@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export default function ComplaintDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -17,7 +19,7 @@ export default function ComplaintDetails() {
   const fetchDetails = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`http://localhost:5000/api/complaints/${id}`, {
+      const res = await fetch(`${API_URL}/api/complaints/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
@@ -27,7 +29,7 @@ export default function ComplaintDetails() {
       setTitle(data.title);
       setCategory(data.category);
       setDescription(data.description);
-    } catch (err) {
+    } catch {
       setError('Server connection failed.');
     }
   };
@@ -47,7 +49,7 @@ export default function ComplaintDetails() {
 
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`http://localhost:5000/api/complaints/${id}`, {
+      const res = await fetch(`${API_URL}/api/complaints/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -61,7 +63,7 @@ export default function ComplaintDetails() {
       setIsEditing(false);
       setMessage('Complaint updated successfully.');
       fetchDetails();
-    } catch (err) {
+    } catch {
       setError('Failed to update complaint.');
     }
   };
@@ -71,7 +73,7 @@ export default function ComplaintDetails() {
     setMessage('');
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`http://localhost:5000/api/complaints/${id}`, {
+      const res = await fetch(`${API_URL}/api/complaints/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -83,7 +85,7 @@ export default function ComplaintDetails() {
       if (!res.ok) return setError(data.message);
       setMessage('Status updated.');
       fetchDetails();
-    } catch (err) {
+    } catch {
       setError('Failed to update status.');
     }
   };
