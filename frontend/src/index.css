@@ -6,8 +6,8 @@
 body {
   margin: 0;
   padding: 0;
-  background: #f9f9f9;
-  color: #222;
+  background: #f1f5f9;
+  color: #1e293b;
 }
 
 .navbar {
@@ -16,110 +16,150 @@ body {
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-  background: #333;
+  background: #1e293b;
   color: #fff;
   padding: 12px 20px;
-}
-
-.navbar > div:last-child {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
+  border-bottom: 3px solid #0d9488;
 }
 
 .navbar a,
 .navbar button {
   color: #fff;
   text-decoration: none;
-  margin: 0;
-  background: none;
-  border: 1px solid #fff;
-  padding: 6px 10px;
+  margin-left: 8px;
+  background: #334155;
+  border: 1px solid #64748b;
+  border-radius: 4px;
+  padding: 6px 12px;
   cursor: pointer;
   white-space: nowrap;
   display: inline-block;
   font-size: 14px;
 }
 
+.navbar a:hover,
+.navbar button:hover {
+  background: #0d9488;
+  border-color: #0d9488;
+}
+
 .container {
   max-width: 960px;
-  margin: 15px auto;
-  padding: 15px;
+  margin: 18px auto;
+  padding: 20px;
   background: #fff;
-  border: 1px solid #ddd;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+}
+
+h2, h3 {
+  color: #0f172a;
 }
 
 .form-box {
   max-width: 450px;
   margin: 10px auto;
-  padding: 15px;
-  border: 1px solid #ccc;
+  padding: 20px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-top: 4px solid #2563eb;
+  border-radius: 6px;
 }
 
 label {
   display: block;
-  margin-top: 10px;
+  margin-top: 12px;
   font-weight: bold;
+  color: #334155;
+  font-size: 14px;
 }
 
 input,
 select,
 textarea {
   width: 100%;
-  padding: 8px;
+  padding: 8px 10px;
   margin-top: 4px;
-  border: 1px solid #aaa;
+  border: 1px solid #94a3b8;
+  border-radius: 4px;
   font-size: 14px;
+  background: #fff;
 }
 
 button {
-  margin-top: 12px;
-  padding: 8px 14px;
+  margin-top: 14px;
+  padding: 8px 16px;
   cursor: pointer;
-  border: 1px solid #333;
-  background: #eee;
+  border: none;
+  border-radius: 4px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 button:hover {
-  background: #8c8a8a;
+  background: #1d4ed8;
 }
 
 .btn-danger {
-  background: #f8d7da;
-  border-color: #a94442;
+  background: #dc2626;
+  color: #fff;
   margin-top: 0;
-  padding: 4px 8px;
+  padding: 5px 10px;
+  font-size: 13px;
+}
+
+.btn-danger:hover {
+  background: #b91c1c;
 }
 
 .error {
-  color: #a94442;
-  background: #f2dede;
-  padding: 8px;
+  color: #991b1b;
+  background: #fee2e2;
+  padding: 8px 12px;
   margin-bottom: 10px;
-  border: 1px solid #ebccd1;
+  border: 1px solid #fca5a5;
+  border-radius: 4px;
 }
 
 .success {
-  color: #3c763d;
-  background: #dff0d8;
-  padding: 8px;
+  color: #166534;
+  background: #dcfce7;
+  padding: 8px 12px;
   margin-bottom: 10px;
-  border: 1px solid #d6e9c6;
+  border: 1px solid #86efac;
+  border-radius: 4px;
 }
 
 .stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 20px;
 }
 
 .stat-card {
-  border: 1px solid #ccc;
-  padding: 12px;
+  flex: 1;
+  min-width: 140px;
+  border: 1px solid #cbd5e1;
+  border-top: 4px solid #2563eb;
+  border-radius: 6px;
+  padding: 14px;
   text-align: center;
-  background: #f4f4f4;
+  background: #eff6ff;
+}
+
+.stat-card strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #334155;
+}
+
+.stat-card div {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0f172a;
 }
 
 .controls {
@@ -139,7 +179,6 @@ button:hover {
 .table-wrapper {
   width: 100%;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 table {
@@ -150,19 +189,25 @@ table {
 
 th,
 td {
-  border: 1px solid #ccc;
-  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  padding: 9px 12px;
   text-align: left;
-  vertical-align: middle;
+  white-space: nowrap;
 }
 
 th {
-  background: #eee;
-  white-space: nowrap;
+  background: #e2e8f0;
+  color: #0f172a;
 }
 
-td:last-child {
-  white-space: nowrap;
+td a {
+  color: #2563eb;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+td a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 600px) {
@@ -176,17 +221,15 @@ td:last-child {
     align-items: flex-start;
   }
 
-  .navbar > div:last-child {
-    width: 100%;
+  .navbar a,
+  .navbar button {
+    margin-left: 0;
+    margin-right: 6px;
+    margin-top: 6px;
   }
 
-  .navbar span {
-    width: 100%;
-    margin-bottom: 4px;
-  }
-
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .stat-card {
+    min-width: 45%;
   }
 
   .controls {
@@ -196,6 +239,6 @@ td:last-child {
   .controls input,
   .controls select {
     width: 100%;
-    min-width: 100%;
+  
   }
 }
