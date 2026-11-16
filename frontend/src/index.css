@@ -6,8 +6,8 @@
 body {
   margin: 0;
   padding: 0;
-  background: #f9f9f9;
-  color: #222;
+  background: #343434;
+  color: #ffffff;
 }
 
 .navbar {
@@ -82,7 +82,7 @@ button {
 }
 
 button:hover {
-  background: #ddd;
+  background: #575555;
 }
 
 .btn-danger {
