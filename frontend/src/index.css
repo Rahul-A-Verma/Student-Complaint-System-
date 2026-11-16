@@ -135,13 +135,13 @@ button:hover {
 .stats-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
   margin-bottom: 20px;
 }
 
 .stat-card {
-  flex: 1;
-  min-width: 140px;
+  flex: 1 1 calc(25% - 9px);
+  min-width: 130px;
   border: 1px solid #cbd5e1;
   border-top: 4px solid #2563eb;
   border-radius: 6px;
@@ -179,6 +179,8 @@ button:hover {
 .table-wrapper {
   width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 15px;
 }
 
 table {
@@ -210,6 +212,12 @@ td a:hover {
   text-decoration: underline;
 }
 
+@media (max-width: 768px) {
+  .stat-card {
+    flex: 1 1 calc(50% - 6px);
+  }
+}
+
 @media (max-width: 600px) {
   .container {
     margin: 10px;
@@ -218,18 +226,19 @@ td a:hover {
 
   .navbar {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
   }
 
   .navbar a,
   .navbar button {
     margin-left: 0;
-    margin-right: 6px;
+    margin-right: 0;
     margin-top: 6px;
+    text-align: center;
   }
 
   .stat-card {
-    min-width: 45%;
+    flex: 1 1 100%;
   }
 
   .controls {
@@ -239,6 +248,6 @@ td a:hover {
   .controls input,
   .controls select {
     width: 100%;
-  
+    min-width: 100%;
   }
 }
