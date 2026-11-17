@@ -218,7 +218,7 @@ td a:hover {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 380px) {
   .container {
     margin: 10px;
     padding: 12px;
